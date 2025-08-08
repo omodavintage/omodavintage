@@ -1,0 +1,111 @@
+/* ---- RESET ---- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ---- BODY ---- */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: url('background.jpg') no-repeat center center/cover;
+    color: white;
+    text-align: center;
+}
+
+/* ---- HEADER ---- */
+header {
+    padding: 20px;
+}
+
+header h1 {
+    font-size: 1.5rem;
+    animation: sloganColors 4s infinite;
+    font-weight: bold;
+}
+
+@keyframes sloganColors {
+    0% { color: green; }
+    33% { color: red; }
+    66% { color: yellow; }
+    100% { color: green; }
+}
+
+/* ---- ACCROCHE ---- */
+.accroche {
+    background: rgba(144, 238, 144, 0.6);
+    padding: 10px;
+    font-size: 1.1rem;
+    border-radius: 10px;
+    margin: 10px auto;
+    max-width: 90%;
+}
+
+/* ---- BOUTONS MENU ---- */
+.menu {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.menu button {
+    background: yellow;
+    color: red;
+    border: none;
+    padding: 10px 15px;
+    margin: 5px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.menu button:hover {
+    opacity: 0.8;
+}
+
+/* ---- FORMULAIRES ---- */
+form {
+    background: white;
+    color: black;
+    padding: 15px;
+    margin: 15px auto;
+    border-radius: 10px;
+    max-width: 90%;
+}
+
+form input, form textarea {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0;
+    border-radius: 5px;
+    border: none;
+}
+
+form button {
+    background: yellow;
+    color: red;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-weight: bold;
+    border: none;
+}
+
+/* ---- CATALOGUE ---- */
+.catalogue {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px;
+    padding: 15px;
+}
+
+.catalogue img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+/* ---- FOOTER ---- */
+footer {
+    margin-top: 20px;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.5);
+}
