@@ -1,0 +1,24 @@
+// --- Exemple de fonctionnalité pour affichage du catalogue ---
+document.addEventListener("DOMContentLoaded", () => {
+    const catalogue = document.querySelector(".catalogue");
+
+    const produits = [
+        { img: "jean1.jpg", prix: "5000 FCFA" },
+        { img: "jean2.jpg", prix: "7000 FCFA" },
+        { img: "jean3.jpg", prix: "10000 FCFA" },
+    ];
+
+    produits.forEach(prod => {
+        const item = document.createElement("div");
+        item.innerHTML = `
+            <img src="${prod.img}" alt="Jean">
+            <p style="color:white;font-weight:bold">${prod.prix}</p>
+        `;
+        catalogue.appendChild(item);
+    });
+});
+
+// --- Fonction de soumission de formulaire ---
+function envoyerFormulaire(type) {
+    alert(`Votre demande pour ${type} a été envoyée avec succès !`);
+}
