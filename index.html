@@ -1,199 +1,338 @@
-<!DOCTYPE html><html lang="fr">
+<!DOCTYPE html>
+<html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>OMODA VINTAGE</title>
   <style>
+    :root {
+      --yellow: #ffd400;
+      --red: #c80000;
+      --green: #28a745;
+      --panel-bg: rgba(0, 128, 0, 0.28);
+    }
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
+      font-family: Arial, Helvetica, sans-serif;
       background-image: url('background.jpg');
       background-size: cover;
+      background-position: center;
       background-attachment: fixed;
       color: white;
-      font-size: 1.2em;
+      line-height: 1.4;
     }
     header {
       text-align: center;
-      padding: 1em;
+      padding: 1.5rem 1rem;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+      color: var(--yellow);
     }
     .slogan span {
       display: inline-block;
-      font-size: 1.2em;
-      font-weight: bold;
+      font-weight: 700;
+      margin: 0 4px;
       animation: colorCycle 4s infinite;
     }
-    .slogan span:nth-child(1) { color: green; animation-delay: 0s; }
-    .slogan span:nth-child(2) { color: red; animation-delay: 0.2s; }
-    .slogan span:nth-child(3) { color: yellow; animation-delay: 0.4s; }@keyframes colorCycle {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.1); }
-  100% { transform: scale(1); }
-}
+    .slogan span:nth-child(1) { color: green }
+    .slogan span:nth-child(2) { color: red }
+    .slogan span:nth-child(3) { color: yellow }
+    @keyframes colorCycle {
+      0% { transform: scale(1) }
+      50% { transform: scale(1.02) }
+      100% { transform: scale(1) }
+    }
 
-.menu {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: space-between;
-  margin: 0 10px 1em;
-}
-.menu button {
-  flex: 1 1 calc(50% - 10px);
-  background: yellow;
-  color: red;
-  font-weight: bold;
-  border: none;
-  padding: 20px;
-  border-radius: 10px;
-  cursor: pointer;
-  font-size: 1.3em;
-}
-.section {
-  margin: 20px;
-  padding: 15px;
-  background-color: rgba(0, 128, 0, 0.3);
-  border-radius: 10px;
-}
-.section h2 {
-  color: yellow;
-  font-size: 1.5em;
-}
-.animated-text {
-  font-size: 1.2em;
-}
-form {
-  margin-top: 10px;
-}
-input, textarea {
-  display: block;
-  width: 100%;
-  padding: 10px;
-  margin: 10px 0;
-  border: none;
-  border-radius: 5px;
-  background: white;
-  font-size: 1em;
-}
-form button {
-  background: yellow;
-  color: red;
-  font-weight: bold;
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  font-size: 1.1em;
-}
-.catalogue {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-  gap: 10px;
-  margin-top: 20px;
-}
-.item {
-  background: rgba(0,0,0,0.6);
-  border-radius: 10px;
-  padding: 10px;
-  color: white;
-  text-align: center;
-}
-.item img {
-  width: 100%;
-  border-radius: 10px;
-}
-.active {
-  background: lightgreen !important;
-}
+    .menu {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      padding: 12px;
+      gap: 10px;
+    }
+    .menu button {
+      flex: 1 1 calc(33% - 10px);
+      min-width: 130px;
+      background: var(--yellow);
+      color: var(--red);
+      border: none;
+      padding: 14px;
+      border-radius: 10px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .menu button:hover { transform: translateY(-3px); }
+    .menu button.active { background: var(--green); color: #fff; }
 
+    .section {
+      margin: 18px;
+      padding: 14px;
+      background: var(--panel-bg);
+      border-radius: 10px;
+      text-align: center;
+    }
+    .section h2 {
+      color: var(--yellow);
+      margin: 0 0 10px;
+      text-align: center;
+    }
+    .animated-text {
+      color: var(--yellow);
+      text-align: center;
+      min-height: 48px;
+      font-size: 1rem;
+      margin-bottom: 10px;
+    }
+
+    .retouche-btn {
+      background: var(--yellow);
+      color: var(--red);
+      border: none;
+      padding: 12px 20px;
+      border-radius: 10px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .retouche-btn:hover { transform: translateY(-3px); }
+
+    .form-card {
+      background: #fff;
+      color: #111;
+      padding: 14px;
+      border-radius: 10px;
+      max-width: 500px;
+      margin: 0 auto;
+      display: none;
+    }
+    .form-card input, .form-card textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border-radius: 6px;
+      border: 1px solid #ddd;
+      font-size: 1rem;
+    }
+    .form-card button {
+      background: var(--yellow);
+      color: var(--red);
+      border: none;
+      padding: 10px;
+      border-radius: 8px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .note {
+      color: var(--yellow);
+      font-style: italic;
+      text-align: center;
+      margin-top: 6px;
+    }
+    .confirmation {
+      display: none;
+      margin-top: 8px;
+      color: lightgreen;
+      font-weight: 700;
+    }
+
+    .checkboxes {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    .checkboxes label {
+      color: var(--yellow);
+      font-weight: bold;
+      margin: 0 10px;
+      cursor: pointer;
+    }
+
+    .payment-section {
+      display: none;
+      background: var(--panel-bg);
+      margin: 10px 18px;
+      padding: 12px;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .payment-logos img {
+      width: 140px;
+      border-radius: 10px;
+      margin: 8px;
+      cursor: pointer;
+    }
+    footer {
+      text-align: center;
+      margin: 20px;
+      color: var(--yellow);
+    }
   </style>
 </head>
 <body>
   <header>
     <h1>OMODA VINTAGE</h1>
     <p class="slogan">
-      <span>Old</span> <span>or</span> <span>New</span> <span>Model</span> <span>of</span> <span>Denim-jeans</span>
-      <span>redesigned</span> <span>into</span> <span>a</span> <span>unique</span> <span>item</span>
+      <span>Old</span> <span>or</span> <span>New</span> <span>Model</span>
+      <span>of</span> <span>Denim-jeans</span> <span>redesigned</span>
+      <span>into</span> <span>a</span> <span>unique</span> <span>item</span>
     </p>
-  </header>  <div class="menu">
-    <button>Mes créations</button>
-    <button onclick="toggleForm('simpleForm', this)">Retouche rapide</button>
-    <button>S'inspirer</button>
-    <button>Travailler pour nous</button>
-    <button>Encouragez-nous</button>
-  </div>  <div class="section">
+  </header>
+
+  <nav class="menu">
+    <button onclick="openLink('https://t.me/+fuTjbE9VjKdmN2Y0')">Mes créations</button>
+    <button onclick="openLink('https://www.pinterest.com/search/pins/?q=jeans%20recycl%C3%A9%20streetwear')">S'inspirer</button>
+    <button id="lavageBtn" onclick="toggleSection('lavageForm', this)">Lavage / Pressing</button>
+    <button id="workBtn" onclick="toggleSection('workOptions', this)">Travailler pour nous</button>
+    <button id="avisBtn" onclick="toggleSection('avisForm', this)">Vos avis</button>
+    <button id="encourageBtn" onclick="toggleSection('payment', this)">Encouragez-nous</button>
+  </nav>
+
+  <section class="section">
     <h2>Pourquoi recycler votre jean ?</h2>
-    <p class="animated-text">
-      Chaque jean usé est une opportunité de créer une œuvre unique. Ne jetez plus vos vieux pantalons !<br>
-      Notre service vient récupérer vos jeans usés pour leur donner une seconde vie à travers des retouches artistiques ou des designs personnalisés.<br>
-      À partir de 500F (selon la retouche), nous pouvons ajuster, cintrer, plier ou couper votre jean selon vos envies.<br>
-      Il suffit d’effectuer un dépôt via OM ou MoMo de 1000F, et nous vous enverrons un de nos agents. Livraison sous 24h. Satisfaction garantie !
-    </p>
-  </div>  <div class="section">
-    <h2>Retouche rapide</h2>
-    <div class="menu">
-      <button onclick="toggleForm('simpleForm', this)">Recyclage simple</button>
-      <button onclick="toggleForm('designForm', this)">Design personnalisé</button>
+    <div class="animated-text" id="animatedText"></div>
+
+    <!-- Ajout du bouton Retouche rapide -->
+    <button class="retouche-btn" onclick="openLink('https://wa.me/237659003133?text=Bonjour%20OMODA%20VINTAGE%2C%20je%20souhaite%20une%20retouche%20rapide%20de%20mon%20jean.')">
+      Retouche rapide
+    </button>
+  </section>
+
+  <!-- Lavage / Pressing -->
+  <div class="form-card" id="lavageForm">
+    <h2>Laver mon Jean</h2>
+    <form onsubmit="return sendWhatsApp(this,'L.P')">
+      <input name="pseudo" placeholder="Pseudo" required />
+      <input name="pieces" type="number" placeholder="Nombre de pièces" required />
+      <input name="localisation" placeholder="Localisation" required />
+      <input name="whatsapp" placeholder="Numéro WhatsApp" required />
+      <button type="submit">Envoyer</button>
+      <div class="confirmation">✅ Vos infos ont bien été transmises à WhatsApp.</div>
+    </form>
+    <p class="note">Ce service est réservé uniquement pour l’entretien de vos vêtements en jeans (vestes, culottes, sacs, pantalons, etc...).</p>
+  </div>
+
+  <!-- Travailler pour nous -->
+  <div class="form-card" id="workOptions">
+    <h2>Rejoins notre équipe</h2>
+    <div class="checkboxes">
+      <label><input type="checkbox" id="livreurCheck" onchange="showSubForm('livreur')"> Livreur</label>
+      <label><input type="checkbox" id="tailleurCheck" onchange="showSubForm('tailleur')"> Tailleur</label>
     </div>
-    <div id="simpleForm" style="display:none">
-      <form onsubmit="return highlightButton(this)">
-        <input type="text" placeholder="Pseudo">
-        <input type="text" placeholder="Localisation">
-        <input type="number" placeholder="Nombre de pièces">
-        <input type="text" placeholder="Numéro WhatsApp">
-        <button type="submit">Envoyer</button>
-      </form>
-    </div>
-    <div id="designForm" style="display:none">
-      <form onsubmit="return highlightButton(this)">
-        <input type="text" placeholder="Pseudo">
-        <input type="text" placeholder="Localisation">
-        <input type="number" placeholder="Nombre de pièces">
-        <input type="text" placeholder="Numéro WhatsApp">
-        <button type="submit">Envoyer</button>
-      </form>
-    </div>
-  </div>  <div class="section">
+  </div>
+
+  <div class="form-card" id="livreurForm">
+    <p style="color:var(--yellow)">Ce service est destiné aux personnes possédant une moto-taxi 🛵.<br>
+    Gagnez des frais de courses en assurant le transport rapide des articles du client.<br>
+    <b>NB :</b> Validation uniquement par mail après examen complet du profil et paiement de 1000F d’affiliation.</p>
+    <form onsubmit="return sendWhatsApp(this,'T.N.L')">
+      <input name="nom" placeholder="Nom complet" required />
+      <input name="age" placeholder="Âge" required />
+      <input name="localisation" placeholder="Localisation" required />
+      <input name="email" placeholder="Adresse e-mail" required />
+      <textarea name="motivation" placeholder="Texte de motivation"></textarea>
+      <input type="file" name="piece" accept="image/*" />
+      <button type="submit">Envoyer</button>
+      <div class="confirmation">✅ Votre demande a été transmise via WhatsApp.</div>
+    </form>
+    <p class="note">Assurez-vous que la photo ne dépasse pas 100MB et soit bien visible.</p>
+  </div>
+
+  <div class="form-card" id="tailleurForm">
+    <p style="color:var(--yellow)">Si tu as de l’expérience en couture, rejoins notre équipe et participe à cette aventure streetwear ✨</p>
+    <form onsubmit="return sendWhatsApp(this,'T.N.T')">
+      <input name="nom" placeholder="Nom complet" required />
+      <input name="age" placeholder="Âge" required />
+      <input name="localisation" placeholder="Localisation" required />
+      <input name="email" placeholder="Adresse e-mail" required />
+      <textarea name="motivation" placeholder="Texte de motivation"></textarea>
+      <input type="file" name="piece" accept="image/*" />
+      <button type="submit">Envoyer</button>
+      <div class="confirmation">✅ Votre demande a été transmise via WhatsApp.</div>
+    </form>
+    <p class="note">Validation uniquement après examen complet de votre profil par e-mail.</p>
+  </div>
+
+  <!-- Avis -->
+  <div class="form-card" id="avisForm">
     <h2>Vos avis</h2>
     <form>
-      <input type="text" placeholder="Pseudo">
+      <input placeholder="Pseudo" />
       <textarea placeholder="Ajouter un commentaire"></textarea>
-      <button>Envoyer</button>
+      <button type="button">Envoyer</button>
     </form>
-  </div>  <div class="section">
-    <h2>Catalogue</h2>
-    <div class="catalogue">
-      <div class="item">
-        <img src="jean1.jpg" alt="Jean 1">
-        <p>Jean oversize - 5000F</p>
-      </div>
-      <div class="item">
-        <img src="jean2.jpg" alt="Jean 2">
-        <p>Babouches denim - 3500F</p>
-      </div>
+  </div>
+
+  <!-- Encouragez-nous -->
+  <div class="payment-section" id="payment">
+    <h2>Soutenez notre initiative</h2>
+    <p>Choisissez un moyen de paiement :</p>
+    <div class="payment-logos">
+      <img src="orange-money.png" alt="Orange Money" onclick="selectPayment('Orange Money', '659003133')" />
+      <img src="mtn-momo.png" alt="MTN MoMo" onclick="selectPayment('MTN MoMo', '680699830')" />
     </div>
-  </div>  <footer style="text-align:center; margin: 20px;">
-    &copy; 2025 OMODA VINTAGE
-  </footer>  <script>
-    function toggleForm(id, button) {
-      document.getElementById('simpleForm').style.display = 'none';
-      document.getElementById('designForm').style.display = 'none';
+    <p id="paymentInfo" style="color:var(--yellow);display:none;">Numéro : <span id="paymentNumber"></span></p>
+  </div>
 
-      const form = document.getElementById(id);
-      const buttons = document.querySelectorAll('.menu button');
-      buttons.forEach(btn => btn.classList.remove('active'));
+  <footer>&copy; 2025 OMODA VINTAGE</footer>
 
-      if (form.style.display === 'block') {
-        form.style.display = 'none';
-      } else {
-        form.style.display = 'block';
-        button.classList.add('active');
+  <script>
+    const forms = ['lavageForm','workOptions','livreurForm','tailleurForm','avisForm','payment'];
+    function toggleSection(id, btn) {
+      forms.forEach(f=>{
+        const el=document.getElementById(f);
+        const b=document.querySelector(`button[onclick*="${f}"]`);
+        if(el && f!==id) el.style.display='none';
+        if(b) b.classList.remove('active');
+      });
+      const el=document.getElementById(id);
+      if(el){
+        const open=el.style.display==='block';
+        el.style.display=open?'none':'block';
+        if(btn && !open) btn.classList.add('active');
       }
     }
 
-    function highlightButton(form) {
-      const btn = form.querySelector('button');
-      btn.classList.add('active');
+    function showSubForm(type){
+      document.getElementById('livreurForm').style.display = 'none';
+      document.getElementById('tailleurForm').style.display = 'none';
+      if(type==='livreur' && document.getElementById('livreurCheck').checked)
+        document.getElementById('livreurForm').style.display='block';
+      if(type==='tailleur' && document.getElementById('tailleurCheck').checked)
+        document.getElementById('tailleurForm').style.display='block';
+    }
+
+    function selectPayment(method,num){
+      document.getElementById('paymentInfo').style.display='block';
+      document.getElementById('paymentNumber').textContent=`${method}: ${num}`;
+    }
+
+    function sendWhatsApp(formEl, type){
+      const fd=new FormData(formEl);
+      let msg=`${type} - `;
+      fd.forEach((v,k)=>{ if(k!=='piece') msg+=`${k}: ${v}, `; });
+      const phone='237659003133';
+      window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`,'_blank');
+      formEl.querySelector('.confirmation').style.display='block';
+      setTimeout(()=>formEl.querySelector('.confirmation').style.display='none',4000);
       return false;
     }
-  </script></body>
+
+    const phrases=[
+      "Chaque jean usé est une opportunité de créer une œuvre unique.",
+      "Notre service récupère vos jeans pour leur donner une seconde vie.",
+      "À partir de 500F, retouches selon vos envies.",
+      "Livraison sous 24h. Satisfaction garantie !"
+    ];
+    let i=0;
+    setInterval(()=>{
+      document.getElementById('animatedText').textContent=phrases[i];
+      i=(i+1)%phrases.length;
+    },4000);
+
+    function openLink(url){ window.open(url, '_blank'); }
+  </script>
+</body>
 </html>
